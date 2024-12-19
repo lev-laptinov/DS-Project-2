@@ -1,5 +1,5 @@
 ---
-title: "Project 2"
+title: "Grade mark correlation features for university students"
 author: "Bananchiki group: Lev Laptinov, Dmytro Kolisnyk, Vasyl Moiseiev"
 ---
 
