@@ -5,7 +5,9 @@ author: "Bananchiki group: Lev Laptinov, Dmytro Kolisnyk, Vasyl Moiseiev"
 
 # Introduction
 
-A dataset created from a higher education institution (acquired from several disjoint databases) related to students enrolled in different undergraduate degrees, such as agronomy, design, education, nursing, journalism, management, social service, and technologies. The dataset includes information known at the time of student enrollment (academic path, demographics, and social-economic factors) and the students' academic performance at the end of the first and second semesters.
+[Source of dataset](https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success)
+
+A dataset created from a higher education institution (acquired from several disjoint databases) related to students enrolled in different undergraduate degrees, such as agronomy, design, education, nursing, journalism, management, social service, and technologies. The dataset includes information known at the time of student enrollment (academic path, demographics, and social-economic factors) and the students' academic performance at the end of the first and second semesters. [Dataset is already performed a rigorous data preprocessing to handle data from anomalies, unexplainable outliers, and missing values.](https://arc.net/l/quote/emkqvmzr)
 
 ```{r, include=FALSE}
 library(tidyverse)
@@ -50,7 +52,7 @@ get_feature_info <- function(x) {
 }
 }
 
-variable_info <- data.frame(
+variable_info <- tibble(
   Variable = names(selected_data),
   DataType = sapply(selected_data, class),
   Feature_info = sapply(selected_data, get_feature_info)
