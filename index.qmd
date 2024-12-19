@@ -64,6 +64,7 @@ variable_info
 
 ## Research question
 
-**Which featrues have significant with result grade for the first semester?**
+**What are the significant factors influencing first-year academic performance among students, as measured by the average first-year grade?**
 
 It's interesting for us to have idea what we could change to improve our grades (become older for example :3).
+But overall understanding the factors that influence academic performance is crucial for improving educational outcomes. This can not only be useful for students to have ideas what to change to get better marks but also can guide universities in designing interventions, such as targeted support for specific groups.
