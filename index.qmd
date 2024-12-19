@@ -7,21 +7,17 @@ author: "Bananchiki group: Lev Laptinov, Dmytro Kolisnyk, Vasyl Moiseiev"
 
 A dataset created from a higher education institution (acquired from several disjoint databases) related to students enrolled in different undergraduate degrees, such as agronomy, design, education, nursing, journalism, management, social service, and technologies. The dataset includes information known at the time of student enrollment (academic path, demographics, and social-economic factors) and the students' academic performance at the end of the first and second semesters.
 
-```{r}
+```{r, include=FALSE}
 library(tidyverse)
 library(rvest)
 library(ggplot2)
 ```
 
-```{r}
+```{r, include=FALSE}
 data <- read_delim("data.csv", delim = ";")
 head(data)
-
 ```
 
-```{r}
-colnames(data)
-```
 
 ```{r}
 selected_data <- data %>%
@@ -68,3 +64,4 @@ variable_info
 
 It's interesting for us to have idea what we could change to improve our grades (become older for example :3).
 But overall understanding the factors that influence academic performance is crucial for improving educational outcomes. This can not only be useful for students to have ideas what to change to get better marks but also can guide universities in designing interventions, such as targeted support for specific groups.
+
