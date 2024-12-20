@@ -160,8 +160,8 @@ linear_fit <- lm(first_year_grade ~ admission_grade, data = selected_data)
 nonlinear_fit <- lm(first_year_grade ~ admission_grade_squared, data = selected_data)
 
 # Model Summaries
-summary(linear_fit)
-summary(nonlinear_fit)
+knitr::kable(tidy(linear_fit))
+knitr::kable(tidy(nonlinear_fit))
 
 # Visualization
 r2_linear <- glance(linear_fit)$r.squared
@@ -190,8 +190,8 @@ linear_fit <- lm(previous_qualification_grade ~ admission_grade, data = selected
 nonlinear_fit <- lm(previous_qualification_grade ~ admission_grade_squared, data = selected_data)
 
 # Model Summaries
-summary(linear_fit)
-summary(nonlinear_fit)
+knitr::kable(tidy(linear_fit))
+knitr::kable(tidy(nonlinear_fit))
 
 # Visualization
 r2_linear <- glance(linear_fit)$r.squared
@@ -265,3 +265,9 @@ ggplot(selected_data, aes(x = admission_grade, y = first_year_grade, color = att
   ) +
   theme_minimal()
 ```
+
+## Conclusion 
+
+The dataset contains information about students' academic performance and other factors that may influence their grades. We explored the distribution of grades and identified correlations between admission grades and first-year grades. We also examined the relationship between admission grades and previous qualification grades. Our analysis revealed that admission grades are positively correlated with first-year grades, indicating that students with higher admission grades tend to perform better in their first year. We also found a nonlinear relationship between admission grades and first-year grades, suggesting that the relationship is not strictly linear. Further analysis is needed to explore other factors that may influence academic performance
+
+Also we found that correlation with sex is scholarship holder is not significant. But we can see that correlation with attendance type is significant. We can see that students with daytime attendance have higher grades than students with evening attendance.
