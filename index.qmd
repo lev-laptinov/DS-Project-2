@@ -128,36 +128,36 @@ list(
 )
 ```
 
-# Linear and Nonlinear Relationships
+# Linear Relationships
 
 ## Admission Grade vs First-Year Grade
 
 ```{r}
-# Linear and Nonlinear Models
+# Linear and squared Models
 selected_data <- selected_data %>%
   mutate(admission_grade_squared = admission_grade^2)
 
 linear_fit <- lm(first_year_grade ~ admission_grade, data = selected_data)
-nonlinear_fit <- lm(first_year_grade ~ admission_grade_squared, data = selected_data)
+squared_fit <- lm(first_year_grade ~ admission_grade_squared, data = selected_data)
 
 # Model Summaries
 knitr::kable(tidy(linear_fit))
-knitr::kable(tidy(nonlinear_fit))
+knitr::kable(tidy(squared_fit))
 
 # Visualization
 r2_linear <- glance(linear_fit)$r.squared
-r2_nonlinear <- glance(nonlinear_fit)$r.squared
+r2_squared <- glance(squared_fit)$r.squared
 
 list(
   r2_linear = r2_linear,
-  r2_nonlinear = r2_nonlinear
+  r2_squared = r2_squared
 )
 
 ggplot(selected_data, aes(x = admission_grade, y = first_year_grade)) +
   geom_point(alpha = 0.3) +
   geom_smooth(method = "lm", se = FALSE, color = "red") +
   labs(
-    title = "Nonlinear Relationship Between Admission Grade and First-Year Grade",
+    title = "Relationship Between Squared Admission Grade and First-Year Grade",
     x = "Admission Grade",
     y = "First-Year Grade"
   ) +
@@ -168,26 +168,26 @@ ggplot(selected_data, aes(x = admission_grade, y = first_year_grade)) +
 
 ```{r}
 linear_fit <- lm(previous_qualification_grade ~ admission_grade, data = selected_data)
-nonlinear_fit <- lm(previous_qualification_grade ~ admission_grade_squared, data = selected_data)
+squared_fit <- lm(previous_qualification_grade ~ admission_grade_squared, data = selected_data)
 
 # Model Summaries
 knitr::kable(tidy(linear_fit))
-knitr::kable(tidy(nonlinear_fit))
+knitr::kable(tidy(squared_fit))
 
 # Visualization
 r2_linear <- glance(linear_fit)$r.squared
-r2_nonlinear <- glance(nonlinear_fit)$r.squared
+r2_squared <- glance(squared_fit)$r.squared
 
 list(
   r2_linear = r2_linear,
-  r2_nonlinear = r2_nonlinear
+  r2_squared = r2_squared
 )
 
 ggplot(selected_data, aes(x = admission_grade, y = previous_qualification_grade)) +
   geom_point(alpha = 0.3) +
   geom_smooth(method = "lm", se = FALSE, color = "red") +
   labs(
-    title = "Nonlinear Relationship Between Admission Grade and Previous Qualification Grade",
+    title = "Relationship Between Squared Admission Grade and Previous Qualification Grade",
     x = "Admission Grade",
     y = "Previous Qualification Grade",
   ) +
@@ -252,3 +252,12 @@ ggplot(selected_data, aes(x = admission_grade, y = first_year_grade, color = att
 The dataset contains information about students' academic performance and other factors that may influence their grades. We explored the distribution of grades and identified correlations between admission grades and first-year grades. We also examined the relationship between admission grades and previous qualification grades. Our analysis revealed that admission grades are positively correlated with first-year grades, indicating that students with higher admission grades tend to perform better in their first year. We also found a nonlinear relationship between admission grades and first-year grades, suggesting that the relationship is not strictly linear. Further analysis is needed to explore other factors that may influence academic performance
 
 Also we found that correlation with sex is scholarship holder is not significant. But we can see that correlation with attendance type is significant. We can see that students with daytime attendance have higher grades than students with evening attendance. This may be due to the fact that daytime students have more time to study and attend classes, while evening students may have other commitments that prevent them from devoting as much time to their studies. This finding suggests that attendance type is an important factor to consider when analyzing academic performance.
+
+
+# Appendix
+
+Lev Laptinov - Introduciton, Data Loading and Preprocessing, Research Question, Exploratory Data Analysis
+
+Dmytro Kolisnyk - Methodology, Correlation, part of Linear Relationships
+
+Vasyl Moiseiev - part of Linear Relationships, Discussion and Conclusion
