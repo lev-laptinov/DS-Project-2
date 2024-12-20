@@ -3,11 +3,6 @@ project:
 
 website:
   title: "Project 2"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
 
 format:
   html:
