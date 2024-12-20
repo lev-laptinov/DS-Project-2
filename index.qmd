@@ -13,13 +13,16 @@ A dataset created from a higher education institution (acquired from several dis
 library(tidyverse)
 library(rvest)
 library(ggplot2)
+if (!require("skimr")) {
+  install.packages("skimr")
+}
+library(skimr)
 ```
 
 ```{r, include=FALSE}
 data <- read_delim("data.csv", delim = ";")
 head(data)
 ```
-
 
 ```{r}
 selected_data <- data %>%
@@ -44,20 +47,7 @@ selected_data$scholarship_holder <- factor(ifelse(selected_data$scholarship_hold
 ```
 
 ```{r}
-get_feature_info <- function(x) {
-  if (is.character(x)) {
-    paste("Unique values:", unique(x) %>% paste(collapse = ", "))
-  } else {
-    paste("Min:", min(x), "Max:", max(x), "Mean:", mean(x), "Median:", median(x), "SD:", sd(x))
-}
-}
-
-variable_info <- tibble(
-  Variable = names(selected_data),
-  DataType = sapply(selected_data, class),
-  Feature_info = sapply(selected_data, get_feature_info)
-)
-variable_info
+skim(selected_data)
 ```
 
 ## Research question
@@ -66,15 +56,3 @@ variable_info
 
 It's interesting for us to have idea what we could change to improve our grades (become older for example :3).
 But overall understanding the factors that influence academic performance is crucial for improving educational outcomes. This can not only be useful for students to have ideas what to change to get better marks but also can guide universities in designing interventions, such as targeted support for specific groups.
-
-
-# Data preprocessing
-
-```{r}
-ggplot(selected_data, aes(x = attendance_type, fill = attendance_type)) +
-    geom_bar() +
-    labs(title = "Attendance type distribution")
-```
-
-# Data analysis
-
