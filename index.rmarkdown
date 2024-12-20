@@ -3,18 +3,26 @@ title: "Grade Mark Correlation Features for University Students"
 author: "Bananchiki Group: Lev Laptinov, Dmytro Kolisnyk, Vasyl Moiseiev"
 ---
 
+
+
 # Introduction
 
 [Source of dataset](https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success)
 
 A dataset created from a higher education institution (acquired from several disjoint databases) related to students enrolled in different undergraduate degrees, such as agronomy, design, education, nursing, journalism, management, social service, and technologies. The dataset includes information known at the time of student enrollment (academic path, demographics, and social-economic factors) and the students' academic performance at the end of the first and second semesters. [Dataset is already performed a rigorous data preprocessing to handle data from anomalies, unexplainable outliers, and missing values.](https://arc.net/l/quote/emkqvmzr)
 
+
+
 ```{r, include=FALSE}
 library(tidyverse)
 library(tidymodels)
 ```
 
+
+
 # Data Loading and Preprocessing
+
+
 
 ```{r, include=FALSE}
 data <- read_delim("data.csv", delim = ";")
@@ -68,7 +76,11 @@ grouped_data <- selected_data %>%
 grouped_data
 ``` 
 
+
+
 # Variable Overview
+
+
 
 ```{r}
 get_feature_info <- function(x) {
@@ -87,6 +99,8 @@ variable_info <- tibble(
 variable_info
 ```
 
+
+
 # Research Question
 
 **What are the significant factors influencing first-year academic performance among students, as measured by the average first-year grade?**
@@ -96,6 +110,8 @@ Understanding the factors that influence academic performance is crucial for imp
 # Exploratory Data Analysis
 
 ## Distribution of Grades
+
+
 
 ```{r}
 sturges_bins <- function(data) {
@@ -147,7 +163,11 @@ ggplot(selected_data, aes(x = previous_qualification_grade)) +
   )
 ```
 
+
+
 ## Correlations
+
+
 
 ```{r}
 cor_first_sem <- cor(selected_data$admission_grade, selected_data$first_sem_grade, use = "complete.obs")
@@ -163,9 +183,13 @@ list(
 )
 ```
 
+
+
 # Linear and Nonlinear Relationships
 
 ## Admission Grade vs First-Year Grade
+
+
 
 ```{r}
 # Linear and Nonlinear Models
@@ -199,7 +223,11 @@ ggplot(selected_data, aes(x = admission_grade, y = first_year_grade)) +
   theme_minimal()
 ```
 
+
+
 ## Previous Qualification Grade vs First-Year Grade
+
+
 
 ```{r}
 # Linear and Nonlinear Models
@@ -233,7 +261,6 @@ ggplot(selected_data, aes(x = previous_qualification_grade, y = first_year_grade
   theme_minimal()
 ```
 
-
 ```{r}
 ggplot(selected_data, aes(x = admission_grade, y = first_year_grade, color = gender, shape = factor(gender))) +
   geom_point(alpha = 0.5) +
@@ -251,6 +278,7 @@ ggplot(selected_data, aes(x = admission_grade, y = first_year_grade, color = gen
   ) +
   theme_minimal()
 ```
+
 ```{r}
 ggplot(selected_data, aes(x = admission_grade, y = first_year_grade, color = scholarship_holder, shape = factor(scholarship_holder))) +
   geom_point(alpha = 0.5) +
@@ -268,6 +296,7 @@ ggplot(selected_data, aes(x = admission_grade, y = first_year_grade, color = sch
   ) +
   theme_minimal()
 ```
+
 ```{r}
 ggplot(selected_data, aes(x = admission_grade, y = first_year_grade, color = attendance_type, shape = factor(attendance_type))) +
   geom_point(alpha = 0.5) +
