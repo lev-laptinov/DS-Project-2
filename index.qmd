@@ -92,7 +92,7 @@ ggplot(selected_data, aes(x = first_year_grade)) +
   geom_histogram(bins = first_year_bins, fill = "steelblue", color = "black") +
   theme_minimal() +
   labs(
-    title = "Histogram of First-Year Grade (Sturges' Rule)",
+    title = "Histogram of First-Year Grade",
     x = "First-Year Grade",
     y = "Count"
   )
@@ -103,7 +103,7 @@ ggplot(selected_data, aes(x = first_sem_grade)) +
   geom_histogram(bins = first_sem_bins, fill = "steelblue", color = "black") +
   theme_minimal() +
   labs(
-    title = "Histogram of First-Semester Grade (Sturges' Rule)",
+    title = "Histogram of First-Semester Grade",
     x = "First-Semester Grade",
     y = "Count"
   )
@@ -114,7 +114,7 @@ ggplot(selected_data, aes(x = second_sem_grade)) +
   geom_histogram(bins = second_sem_bins, fill = "steelblue", color = "black") +
   theme_minimal() +
   labs(
-    title = "Histogram of Second-Semester Grade (Sturges' Rule)",
+    title = "Histogram of Second-Semester Grade",
     x = "Second-Semester Grade",
     y = "Count"
   )
@@ -125,7 +125,7 @@ ggplot(selected_data, aes(x = previous_qualification_grade)) +
   geom_histogram(bins = previous_qualification_bins, fill = "steelblue", color = "black") +
   theme_minimal() +
   labs(
-    title = "Histogram of Previous Qualification Grade (Sturges' Rule)",
+    title = "Histogram of Previous Qualification Grade",
     x = "Previous Qualification Grade",
     y = "Count"
   )
