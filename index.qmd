@@ -74,6 +74,18 @@ sturges_bins <- function(data) {
   ceiling(1 + log2(length(data)))
 }
 
+# Admission Grade Distribution
+admission_bins <- sturges_bins(selected_data$admission_grade)
+ggplot(selected_data, aes(x = admission_grade)) +
+  geom_histogram(bins = admission_bins, fill = "steelblue", color = "black") +
+  theme_minimal() +
+  labs(
+    title = "Histogram of Admission Grade",
+    x = "Admission Grade",
+    y = "Count"
+  )
+
+
 # First-Year Grade Distribution
 first_year_bins <- sturges_bins(selected_data$first_year_grade)
 ggplot(selected_data, aes(x = first_year_grade)) +
@@ -171,15 +183,11 @@ ggplot(selected_data, aes(x = admission_grade, y = first_year_grade)) +
   theme_minimal()
 ```
 
-## Previous Qualification Grade vs First-Year Grade
+## Admission Grade vs Previous Qualification Grade
 
 ```{r}
-# Linear and Nonlinear Models
-selected_data <- selected_data %>%
-  mutate(previous_qualification_grade_squared = previous_qualification_grade^2)
-
-linear_fit <- lm(first_year_grade ~ previous_qualification_grade, data = selected_data)
-nonlinear_fit <- lm(first_year_grade ~ previous_qualification_grade + previous_qualification_grade_squared, data = selected_data)
+linear_fit <- lm(previous_qualification_grade ~ admission_grade, data = selected_data)
+nonlinear_fit <- lm(previous_qualification_grade ~ admission_grade + admission_grade_squared, data = selected_data)
 
 # Model Summaries
 summary(linear_fit)
@@ -194,13 +202,13 @@ list(
   r2_nonlinear = r2_nonlinear
 )
 
-ggplot(selected_data, aes(x = previous_qualification_grade, y = first_year_grade)) +
+ggplot(selected_data, aes(x = admission_grade, y = previous_qualification_grade)) +
   geom_point(alpha = 0.3) +
   geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = FALSE, color = "red") +
   labs(
-    title = "Nonlinear Relationship Between Previous Qualification Grade and First-Year Grade",
-    x = "Previous Qualification Grade",
-    y = "First-Year Grade"
+    title = "Nonlinear Relationship Between Admission Grade and Previous Qualification Grade",
+    x = "Admission Grade",
+    y = "Previous Qualification Grade",
   ) +
   theme_minimal()
 ```
