@@ -119,13 +119,11 @@ ggplot(selected_data, aes(x = previous_qualification_grade)) +
 ```{r}
 cor_first_sem <- cor(selected_data$admission_grade, selected_data$first_sem_grade, use = "complete.obs")
 cor_second_sem <- cor(selected_data$admission_grade, selected_data$second_sem_grade, use = "complete.obs")
-cor_first_year <- cor(selected_data$admission_grade, selected_data$first_year_grade, use = "complete.obs")
 cor_previous_qualification <- cor(selected_data$admission_grade, selected_data$previous_qualification_grade, use = "complete.obs")
 
 list(
   cor_first_sem = cor_first_sem,
   cor_second_sem = cor_second_sem,
-  cor_first_year = cor_first_year,
   cor_previous_qualification = cor_previous_qualification
 )
 ```
