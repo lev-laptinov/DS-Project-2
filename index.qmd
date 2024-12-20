@@ -11,11 +11,6 @@ A dataset created from a higher education institution (acquired from several dis
 
 ```{r, include=FALSE}
 library(tidyverse)
-library(rvest)
-library(ggplot2)
-if (!require("skimr")) {
-  install.packages("skimr")
-}
 library(skimr)
 library(tidymodels)
 ```
@@ -85,18 +80,6 @@ ggplot(selected_data, aes(x = admission_grade)) +
     y = "Count"
   )
 
-
-# First-Year Grade Distribution
-first_year_bins <- sturges_bins(selected_data$first_year_grade)
-ggplot(selected_data, aes(x = first_year_grade)) +
-  geom_histogram(bins = first_year_bins, fill = "steelblue", color = "black") +
-  theme_minimal() +
-  labs(
-    title = "Histogram of First-Year Grade",
-    x = "First-Year Grade",
-    y = "Count"
-  )
-
 # First-Semester Grade Distribution
 first_sem_bins <- sturges_bins(selected_data$first_sem_grade)
 ggplot(selected_data, aes(x = first_sem_grade)) +
@@ -136,13 +119,11 @@ ggplot(selected_data, aes(x = previous_qualification_grade)) +
 ```{r}
 cor_first_sem <- cor(selected_data$admission_grade, selected_data$first_sem_grade, use = "complete.obs")
 cor_second_sem <- cor(selected_data$admission_grade, selected_data$second_sem_grade, use = "complete.obs")
-cor_first_year <- cor(selected_data$admission_grade, selected_data$first_year_grade, use = "complete.obs")
 cor_previous_qualification <- cor(selected_data$admission_grade, selected_data$previous_qualification_grade, use = "complete.obs")
 
 list(
   cor_first_sem = cor_first_sem,
   cor_second_sem = cor_second_sem,
-  cor_first_year = cor_first_year,
   cor_previous_qualification = cor_previous_qualification
 )
 ```
