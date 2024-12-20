@@ -38,9 +38,9 @@ head(selected_data)
 
 ```{r}
 selected_data$first_year_grade <- (selected_data$first_sem_grade + selected_data$second_sem_grade)/2
-selected_data$attendance_type <- ifelse(selected_data$attendance_type == 1, "daytime", "evening")
-selected_data$Gender <- ifelse(selected_data$Gender == 1, "male", "female")
-selected_data$scholarship_holder <- ifelse(selected_data$scholarship_holder == 1, "yes", "no")
+selected_data$attendance_type <- factor(ifelse(selected_data$attendance_type == 1, "daytime", "evening"))
+selected_data$Gender <- factor(ifelse(selected_data$Gender == 1, "male", "female"))
+selected_data$scholarship_holder <- factor(ifelse(selected_data$scholarship_holder == 1, "yes", "no"))
 ```
 
 ```{r}
@@ -66,4 +66,15 @@ variable_info
 
 It's interesting for us to have idea what we could change to improve our grades (become older for example :3).
 But overall understanding the factors that influence academic performance is crucial for improving educational outcomes. This can not only be useful for students to have ideas what to change to get better marks but also can guide universities in designing interventions, such as targeted support for specific groups.
+
+
+# Data preprocessing
+
+```{r}
+ggplot(selected_data, aes(x = attendance_type, fill = attendance_type)) +
+    geom_bar() +
+    labs(title = "Attendance type distribution")
+```
+
+# Data analysis
 
