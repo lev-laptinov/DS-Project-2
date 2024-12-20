@@ -40,14 +40,6 @@ selected_data <- data %>%
     second_sem_grade = `Curricular units 2nd sem (grade)`
   ) %>%
   filter(
-    !is.na(admission_grade),
-    !is.na(previous_qualification_grade),
-    !is.na(first_sem_grade),
-    !is.na(second_sem_grade),
-    is.finite(admission_grade),
-    is.finite(previous_qualification_grade),
-    is.finite(first_sem_grade),
-    is.finite(second_sem_grade),
     admission_grade > 0,
     previous_qualification_grade > 0,
     first_sem_grade > 0,
@@ -59,6 +51,7 @@ selected_data <- data %>%
     gender = if_else(gender == 1, "male", "female"),
     scholarship_holder = if_else(scholarship_holder == 1, "yes", "no")
   )
+```
 
 ```{r}
 selected_data$first_year_grade <- (selected_data$first_sem_grade + selected_data$second_sem_grade)/2
