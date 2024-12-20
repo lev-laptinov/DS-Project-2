@@ -247,12 +247,27 @@ ggplot(selected_data, aes(x = admission_grade, y = first_year_grade, color = att
   theme_minimal()
 ```
 
-## Conclusion 
+## Results and Discussion
 
-The dataset contains information about students' academic performance and other factors that may influence their grades. We explored the distribution of grades and identified correlations between admission grades and first-year grades. We also examined the relationship between admission grades and previous qualification grades. Our analysis revealed that admission grades are positively correlated with first-year grades, indicating that students with higher admission grades tend to perform better in their first year. We also found a nonlinear relationship between admission grades and first-year grades, suggesting that the relationship is not strictly linear. Further analysis is needed to explore other factors that may influence academic performance
 
-Also we found that correlation with sex is scholarship holder is not significant. But we can see that correlation with attendance type is significant. We can see that students with daytime attendance have higher grades than students with evening attendance. This may be due to the fact that daytime students have more time to study and attend classes, while evening students may have other commitments that prevent them from devoting as much time to their studies. This finding suggests that attendance type is an important factor to consider when analyzing academic performance.
+**Grade Distributions**
+- Most students have high grades, but there is noticeable variation.
 
+
+**Correlations**
+- Admission grades moderately correlate with semester and previous qualification grades, showing they influence performance but aren’t the only factor.
+
+**Linear Relationships**
+- Admission grades predict first-year grades (R² = `r r2_linear`), with the squared model (R² = `r r2_squared`) fitting slightly better.
+
+ **Group Trends**
+- **Scholarship Holders**: Perform better than non-holders.
+- **Attendance Type**: Daytime students outperform evening students.
+- **Gender**: No major differences.
+
+
+- Admission grades are useful predictors, but other factors matter too.
+- Scholarships and support for evening students could improve outcomes.
 
 # Appendix
 
