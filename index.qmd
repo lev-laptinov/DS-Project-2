@@ -157,7 +157,7 @@ selected_data <- selected_data %>%
   mutate(admission_grade_squared = admission_grade^2)
 
 linear_fit <- lm(first_year_grade ~ admission_grade, data = selected_data)
-nonlinear_fit <- lm(first_year_grade ~ admission_grade + admission_grade_squared, data = selected_data)
+nonlinear_fit <- lm(first_year_grade ~ admission_grade_squared, data = selected_data)
 
 # Model Summaries
 summary(linear_fit)
@@ -174,7 +174,7 @@ list(
 
 ggplot(selected_data, aes(x = admission_grade, y = first_year_grade)) +
   geom_point(alpha = 0.3) +
-  geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = FALSE, color = "red") +
+  geom_smooth(method = "lm", se = FALSE, color = "red") +
   labs(
     title = "Nonlinear Relationship Between Admission Grade and First-Year Grade",
     x = "Admission Grade",
@@ -187,7 +187,7 @@ ggplot(selected_data, aes(x = admission_grade, y = first_year_grade)) +
 
 ```{r}
 linear_fit <- lm(previous_qualification_grade ~ admission_grade, data = selected_data)
-nonlinear_fit <- lm(previous_qualification_grade ~ admission_grade + admission_grade_squared, data = selected_data)
+nonlinear_fit <- lm(previous_qualification_grade ~ admission_grade_squared, data = selected_data)
 
 # Model Summaries
 summary(linear_fit)
@@ -204,7 +204,7 @@ list(
 
 ggplot(selected_data, aes(x = admission_grade, y = previous_qualification_grade)) +
   geom_point(alpha = 0.3) +
-  geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = FALSE, color = "red") +
+  geom_smooth(method = "lm", se = FALSE, color = "red") +
   labs(
     title = "Nonlinear Relationship Between Admission Grade and Previous Qualification Grade",
     x = "Admission Grade",
